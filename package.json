@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "windows": "npm run build && bun build desktop/server.js --compile --target=bun-windows-x64-baseline --outfile dist/Zoo-Shop-Windows-x64.exe",
+    "windows": "npm run build && bun scripts/windows.js",
     "start": "bun desktop/server.js",
     "test": "bun test"
   },
