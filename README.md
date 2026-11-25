@@ -1,11 +1,11 @@
-# Zoo Shop Desktop
+# Shop Desktop
 
 An offline Georgian-language inventory and checkout app for one Windows workstation. The executable contains the shop interface, local server, and SQLite database engine.
 
 ## გაშვება Windows-ზე
 
-1. [ჩამოტვირთეთ ბოლო ვერსია](https://github.com/lnadi17/zoo-shop-desktop/releases/latest) და გაუშვით `Zoo-Shop-Windows-x64.exe`.
-2. ზოო-მაღაზია გაიხსნება თქვენს ბრაუზერში. მუშაობისას დატოვეთ პროგრამის კონსოლის ფანჯარა ღია. თუ ბრაუზერი არ გაიხსნა, გახსენით კონსოლში მითითებული მისამართი.
+1. [ჩამოტვირთეთ ბოლო ვერსია](https://github.com/lnadi17/zoo-shop-desktop/releases/latest) და გაუშვით `Shop-Windows-x64.exe`.
+2. პროგრამა გაიხსნება თქვენს ბრაუზერში. მუშაობისას დატოვეთ პროგრამის კონსოლის ფანჯარა ღია. თუ ბრაუზერი არ გაიხსნა, გახსენით კონსოლში მითითებული მისამართი.
 3. „პროდუქცია“ → „პროდუქტის დამატება“. ჩაწერეთ კოდი, სახელი, გასაყიდი ფასი, საწყისი მარაგი და შესყიდვის ფასი.
 4. „გაყიდვა“ → დაასკანერეთ შტრიხკოდი ან მოძებნეთ პროდუქტი სახელით. შეამოწმეთ რაოდენობა და დაადასტურეთ გაყიდვა. შედეგს ნახავთ „ისტორიაში“.
 5. სარეზერვო ასლის შესანახად გახსენით „პარამეტრები“ → „სარეზერვო ასლი“. პროგრამიდან გასასვლელად დახურეთ კონსოლი და ბრაუზერის ჩანართი.
@@ -14,7 +14,7 @@ An offline Georgian-language inventory and checkout app for one Windows workstat
 
 Download the Windows x64 executable from Releases and double-click it. It opens your default browser and listens on the local loopback address. Keep its console window open while working. The app creates an empty shop on first launch. The executable is unsigned.
 
-The database is stored at `%LOCALAPPDATA%\ZooShopDesktop\shop.sqlite`. Replacing or moving the executable preserves that file. Download a consistent SQLite backup from Settings. To restore, close all copies of Zoo Shop, move the existing database folder to a safe location, recreate the folder, and copy your downloaded backup into it as `shop.sqlite`. Launch Zoo Shop again.
+The database is stored at `%LOCALAPPDATA%\ZooShopDesktop\shop.sqlite`. Replacing or moving the executable preserves that file. Download a consistent SQLite backup from Settings. To restore, close all copies of the app, move the existing database folder to a safe location, recreate the folder, and copy your downloaded backup into it as `shop.sqlite`. Launch the app again.
 
 Sales deduct the oldest stock lots first. A checkout records the entire basket and sale history in a single transaction. Counted items use whole units and weighted items allow three decimal places. An interrupted checkout can be retried from the same cart. Excel inventory and sales reports remain available on their respective screens.
 
@@ -28,10 +28,10 @@ mongoexport --db zoo_shop --collection sellhistories --jsonArray --out sellhisto
 mongoexport --db zoo_shop --collection parameters --jsonArray --out parameters.json
 ```
 
-Copy those files to the new workstation. Close Zoo Shop and import into an empty desktop shop. Substitute the path to your export folder.
+Copy those files to the new workstation. Close the app and import into an empty desktop shop. Substitute the path to your export folder.
 
 ```powershell
-.\Zoo-Shop-Windows-x64.exe --import-mongo "C:\ZooShopExport"
+.\Shop-Windows-x64.exe --import-mongo "C:\ZooShopExport"
 ```
 
 The importer preserves IDs, stock lots and historical sale records. It rolls back the import if a file or record fails validation. Compare stock and sale totals with the original shop before using the new workstation.
@@ -46,7 +46,7 @@ bun test
 npm run windows
 ```
 
-The resulting file is `dist/Zoo-Shop-Windows-x64.exe`. On a Windows machine with Chrome installed, run `node scripts/smoke.mjs dist/Zoo-Shop-Windows-x64.exe` for the end-to-end check. Chrome is a test dependency only. For local development, run `npm run build` followed by `npm start`. Use `ZOO_DATA_DIR` to select an isolated database directory and `--no-browser` to start the server without opening a tab.
+The resulting file is `dist/Shop-Windows-x64.exe`. On a Windows machine with Chrome installed, run `node scripts/smoke.mjs dist/Shop-Windows-x64.exe` for the end-to-end check. Chrome is a test dependency only. For local development, run `npm run build` followed by `npm start`. Use `ZOO_DATA_DIR` to select an isolated database directory and `--no-browser` to start the server without opening a tab.
 
 ## Upstream projects
 

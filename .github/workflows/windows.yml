@@ -16,9 +16,9 @@ jobs:
       - run: npm ci
       - run: bun test
       - run: npm run windows
-      - run: node scripts/smoke.mjs dist/Zoo-Shop-Windows-x64.exe
+      - run: node scripts/smoke.mjs dist/Shop-Windows-x64.exe
       - uses: actions/upload-artifact@v4
         with:
-          name: Zoo-Shop-Windows-x64
-          path: dist/Zoo-Shop-Windows-x64.exe
+          name: Shop-Windows-x64
+          path: dist/Shop-Windows-x64.exe
           if-no-files-found: error

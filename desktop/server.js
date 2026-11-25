@@ -37,7 +37,7 @@ app.use('/api/product', productRoutes(store));
 app.use('/api/history', historyRoutes(store));
 app.use('/api/parameter', parameterRoutes(store));
 app.get('/api/backup', (req,res) => {
-  res.attachment('zoo-shop-' + new Date().toISOString().slice(0,10) + '.sqlite');
+  res.attachment('shop-' + new Date().toISOString().slice(0,10) + '.sqlite');
   res.send(Buffer.from(store.db.serialize()));
 });
 const pages = new Set(['/', '/home','/products','/history','/parameter','/scanner']);
@@ -53,8 +53,8 @@ app.use((err,req,res,next) => {
 });
 const server = app.listen(Number(process.env.ZOO_PORT || 0),'127.0.0.1', () => {
   origin = 'http://127.0.0.1:' + server.address().port;
-  console.log('Zoo Shop: ' + origin + '/home');
-  console.log('Keep this window open while using Zoo Shop. Close it when finished.');
+  console.log('Shop: ' + origin + '/home');
+  console.log('Keep this window open while using the app. Close it when finished.');
   console.log('Database folder: ' + dir);
   if (!process.argv.includes('--no-browser')) {
     const [cmd, ...args] = process.platform === 'win32' ? ['rundll32.exe','url.dll,FileProtocolHandler'] :

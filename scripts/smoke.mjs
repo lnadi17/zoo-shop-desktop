@@ -36,6 +36,8 @@ try {
   const errors = [];
   page.on('pageerror',err => errors.push(err.message));
   await page.goto(origin + '/home');
+  assert.equal(await page.title(), 'მაღაზია');
+  await page.getByRole('banner').getByText('მაღაზია', {exact:true}).waitFor();
   await page.getByRole('link',{name:'დაამატეთ პირველი პროდუქტი'}).click();
   await page.getByRole('button',{name:'პროდუქტის დამატება'}).click();
   const modal = page.locator('.popup.active .content').first();

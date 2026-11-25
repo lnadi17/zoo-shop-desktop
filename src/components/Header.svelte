@@ -4,7 +4,7 @@
   const pages = [['/home','მთავარი'],['/products','პროდუქცია'],['/scanner','გაყიდვა'],['/history','ისტორია'],['/parameter','პარამეტრები']];
 </script>
 <header>
-  <strong>ზოო-მაღაზია</strong>
+  <strong>მაღაზია</strong>
   <nav aria-label="ნავიგაცია">
     {#each pages as [path,label]}
       <a href={path} class:active={pathName === path} aria-current={pathName === path ? 'page' : undefined}>{label}</a>
